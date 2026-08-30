@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+.worktrees/
+.superpowers/
+.DS_Store
+.opencode
+opencode.json
+docs/*
+DESIGN.md
+test/
+coverage/
+__pycache__/
+*.pyc
