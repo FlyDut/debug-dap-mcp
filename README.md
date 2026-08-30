@@ -13,9 +13,8 @@ DAP (Debug Adapter Protocol) **stdio MCP server**——通过一个 `debug` 工�
 需要 Node.js ≥ 22。
 
 ```bash
-npx -y git+https://github.com/FlyDut/debug-dap-mcp    # 直接运行 git 仓库（无需发布 npm，推荐）
-npm i -g debug-dap-mcp        # 全局安装（发布到 npm 后）
-npx debug-dap-mcp             # 或临时运行（发布到 npm 后）
+npx -y @flydut/debug-dap-mcp                             # 临时运行
+npm i -g @flydut/debug-dap-mcp                           # 全局安装
 ```
 
 启动后即一个 stdio MCP server；通常由 MCP 客户端作为子进程拉起，无需手动运行。
@@ -29,13 +28,13 @@ npx debug-dap-mcp             # 或临时运行（发布到 npm 后）
   "mcpServers": {
     "debug-dap-mcp": {
       "command": "npx",
-      "args": ["-y", "git+https://github.com/FlyDut/debug-dap-mcp"]
+      "args": ["-y", "@flydut/debug-dap-mcp"]
     }
   }
 }
 ```
 
-发布到 npm 后，`command` 可直接写 `debug-dap-mcp`（全局安装或 npx 解析）并清空 `args`。
+全局安装后，`command` 可直接写 `debug-dap-mcp` 并清空 `args`。
 
 ### OpenCode（`opencode.json`）
 
@@ -44,14 +43,14 @@ npx debug-dap-mcp             # 或临时运行（发布到 npm 后）
   "mcp": {
     "debug-dap-mcp": {
       "type": "local",
-      "command": ["npx", "-y", "git+https://github.com/FlyDut/debug-dap-mcp"],
+      "command": ["npx", "-y", "@flydut/debug-dap-mcp"],
       "enabled": true
     }
   }
 }
 ```
 
-发布到 npm 后，`command` 可简写为 `["debug-dap-mcp"]`。
+全局安装后，`command` 可简写为 `["debug-dap-mcp"]`。
 
 需要自定义 CLI 参数（如 `--no-project-config`）时并入 `args`/`command` 数组即可，见下文配置节。
 
@@ -149,8 +148,8 @@ attach 请求体合成序（后者逐键覆盖）：适配器 `attachDefaults` �
 诊断全部写 **stderr**（stdout 只承载 MCP 帧）。级别解析：`--log-level <debug|info|warn|error>` 优先 → 否则 `DEBUG_DAP_MCP_LOG` → 否则 `info`。
 
 ```bash
-debug-dap-mcp --log-level debug          # 帧收发摘要 + 适配器最终命令行
-DEBUG_DAP_MCP_LOG=debug debug-dap-mcp    # 环境变量等价物
+npx -y @flydut/debug-dap-mcp --log-level debug   # 帧收发摘要 + 适配器最终命令行
+DEBUG_DAP_MCP_LOG=debug npx -y @flydut/debug-dap-mcp    # 环境变量等价物
 ```
 
 常见错误（`isError:true` 的 `code`）：

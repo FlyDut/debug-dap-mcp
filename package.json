@@ -1,5 +1,5 @@
 {
-  "name": "debug-dap-mcp",
+  "name": "@flydut/debug-dap-mcp",
   "version": "0.1.0",
   "description": "MCP stdio server exposing DAP (Debug Adapter Protocol) capabilities to any MCP client",
   "files": [
