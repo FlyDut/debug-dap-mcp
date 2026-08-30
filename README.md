@@ -11,8 +11,9 @@ DAP (Debug Adapter Protocol) **stdio MCP server**——通过一个 `debug` 工�
 需要 Node.js ≥ 22。
 
 ```bash
-npm i -g debug-dap-mcp        # 全局安装
-npx debug-dap-mcp             # 或临时运行
+npx -y git+https://github.com/FlyDut/debug-dap-mcp    # 直接运行 git 仓库（无需发布 npm，推荐）
+npm i -g debug-dap-mcp        # 全局安装（发布到 npm 后）
+npx debug-dap-mcp             # 或临时运行（发布到 npm 后）
 ```
 
 启动后即一个 stdio MCP server；通常由 MCP 客户端作为子进程拉起，无需手动运行。
@@ -25,12 +26,14 @@ npx debug-dap-mcp             # 或临时运行
 {
   "mcpServers": {
     "debug-dap-mcp": {
-      "command": "debug-dap-mcp",
-      "args": []
+      "command": "npx",
+      "args": ["-y", "git+https://github.com/FlyDut/debug-dap-mcp"]
     }
   }
 }
 ```
+
+发布到 npm 后，`command` 可直接写 `debug-dap-mcp`（全局安装或 npx 解析）并清空 `args`。
 
 ### OpenCode（`opencode.json`）
 
@@ -39,12 +42,14 @@ npx debug-dap-mcp             # 或临时运行
   "mcp": {
     "debug-dap-mcp": {
       "type": "local",
-      "command": ["debug-dap-mcp"],
+      "command": ["npx", "-y", "git+https://github.com/FlyDut/debug-dap-mcp"],
       "enabled": true
     }
   }
 }
 ```
+
+发布到 npm 后，`command` 可简写为 `["debug-dap-mcp"]`。
 
 需要自定义 CLI 参数（如 `--no-project-config`）时并入 `args`/`command` 数组即可，见下文配置节。
 
