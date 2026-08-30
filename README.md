@@ -6,6 +6,8 @@ DAP (Debug Adapter Protocol) **stdio MCP server**——通过一个 `debug` 工�
 - 每次返回统一 JSON 载荷（`structuredContent` 与 `content[0].text` 同源）
 - 自带 14 条内置适配器记录（gdb / lldb-dap / codelldb / debugpy / dlv / js-debug-adapter / netcoredbg / kotlin-debug-adapter / rdbg / php-debug-adapter / bash-debug-adapter / dart-debug-adapter / flutter-debug-adapter / elixir-ls-debugger）
 
+> **项目来源**：具体实现源自 [oh-my-pi](https://github.com/can1357/oh-my-pi)（Pi 内置调试工具），本项目将其改造为独立的 MCP server 实现。
+
 ## 安装
 
 需要 Node.js ≥ 22。
